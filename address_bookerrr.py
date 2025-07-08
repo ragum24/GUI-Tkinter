@@ -1,6 +1,41 @@
 from tkinter import *
 
+from tkinter import messagebox
+
 groots=Tk()
+
+infooooh={}
+
+def clear_everythinggggggg():
+    entry1.delete(0,END)
+    entry2.delete(0,END)
+    entry3.delete(0,END)
+    entry4.delete(0,END)
+    entry5.delete(0,END)
+    
+
+def add():
+    nama=entry1.get()
+    if nama=="":
+        messagebox.showinfo("ERROR!!!","Name cannot be empty, please fill that in...")
+    else:
+        if nama not in infooooh.keys():
+            lllliiiiisssstttt.insert(END,nama)
+        infooooh[nama]=(entry2.get(),entry3.get(),entry4.get(),entry5.get())
+    clear_everythinggggggg()
+
+def edit():
+    select=lllliiiiisssstttt.curselection()
+    if select:
+        entry1.insert(0,lllliiiiisssstttt.get(select))
+        details=infooooh[entry1.get()] 
+        entry2.insert(0,details[0])  
+        entry3.insert(0,details[1])
+        entry4.insert(0,details[2])
+        entry5.insert(0,details[3])
+    else:
+        messagebox.showinfo("ERROR!!!","Please add your name first!")
+
 
 label=Label(groots,text="My Address Book")
 label.grid(row=0,column=1,columnspan=3)
@@ -41,10 +76,10 @@ birthdayyyy.grid(row=6,column=3)
 entry5=Entry(groots)
 entry5.grid(row=6,column=4)
 
-update_b=Button(groots,text="Update/Add",bg="white")
+update_b=Button(groots,text="Update/Add",bg="white",command=add)
 update_b.grid(row=7,column=4,pady=30)
 
-edit_b=Button(groots,text="Edit",bg="white")
+edit_b=Button(groots,text="Edit",bg="white",command=edit)
 edit_b.grid(row=0,column=0)
 
 delete_b=Button(groots,text="Delete",bg="white")
