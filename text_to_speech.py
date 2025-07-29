@@ -8,7 +8,7 @@ root.config()
 root.geometry("300x300")
 
 def text_2_speech():
-    gtttts=gTTS(text=entry.get(),lang="es",tld="es")
+    gtttts=gTTS(text=entry.get(),lang="ta",tld="co.in")
     gtttts.save("AUDIOOH.wav")
     os.system("AUDIOOH.wav")
 
